@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetaGie Innovations | The Trusted Nexus</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS (Configured via CDN for Single File usage) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deepCobalt: '#0A2463',
+                        electricCyan: '#00C2CB',
+                        growthGreen: '#39E579',
+                        slateGray: '#64748B',
+                        offWhite: '#F8FAFC',
+                    },
+                    fontFamily: {
+                        sans: ['Open Sans', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles for nuances not covered by Tailwind utilities */
+        body {
+            background-color: #F8FAFC;
+        }
+        
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(10, 36, 99, 0.05);
+        }
+
+        .hero-text-shadow {
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Verified Shield Animation */
+        .shield-icon {
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover .shield-icon {
+            transform: scale(1.1);
+        }
+
+        /* Mobile Menu Animation */
+        #mobile-menu {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.active {
+            max-height: 400px;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo Placeholder -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <!-- Placeholder Container -->
+                    <div class="bg-deepCobalt text-white p-2 rounded-lg flex items-center gap-2 pr-4 shadow-lg hover:shadow-xl transition-shadow">
+                        <!-- Icon representation -->
+                        <div class="h-8 w-8 bg-electricCyan rounded flex items-center justify-center text-deepCobalt font-bold font-heading">
+                            M
+                        </div>
+                        <!-- Text representation -->
+                        <div class="flex flex-col leading-tight">
+                            <span class="font-heading font-bold text-lg tracking-wide">MetaGie</span>
+                            <span class="font-sans text-[0.6rem] uppercase tracking-wider text-growthGreen">Innovations</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#services" class="font-heading font-semibold text-slateGray hover:text-deepCobalt transition-colors">Services</a>
+                    <a href="#talent" class="font-heading font-semibold text-slateGray hover:text-deepCobalt transition-colors">Talent</a>
+                    <a href="#security" class="font-heading font-semibold text-slateGray hover:text-deepCobalt transition-colors">Security</a>
+                    <a href="#about" class="font-heading font-semibold text-slateGray hover:text-deepCobalt transition-colors">About Us</a>
+                    <a href="#contact" class="bg-deepCobalt text-white px-6 py-2.5 rounded-full font-heading font-bold hover:bg-opacity-90 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-deepCobalt hover:text-electricCyan focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="md:hidden bg-white border-t border-gray-100 shadow-xl">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-slateGray hover:text-deepCobalt hover:bg-gray-50">Services</a>
+                <a href="#talent" class="block px-3 py-2 rounded-md text-base font-medium text-slateGray hover:text-deepCobalt hover:bg-gray-50">Talent</a>
+                <a href="#security" class="block px-3 py-2 rounded-md text-base font-medium text-slateGray hover:text-deepCobalt hover:bg-gray-50">Security</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-slateGray hover:text-deepCobalt hover:bg-gray-50">About Us</a>
+                <a href="#contact" class="block w-full text-center mt-4 bg-deepCobalt text-white px-6 py-3 rounded-lg font-bold">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Canvas Network Animation -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden bg-deepCobalt pt-20">
+        <!-- Canvas Background -->
+        <canvas id="network-canvas" class="absolute inset-0 w-full h-full z-0"></canvas>
+        
+        <!-- Overlay Gradient for Readability -->
+        <div class="absolute inset-0 bg-gradient-to-b from-deepCobalt/80 via-deepCobalt/60 to-deepCobalt/90 z-1"></div>
+
+        <!-- Content -->
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto" data-aos="fade-up">
+            <div class="inline-block px-4 py-1.5 mb-6 rounded-full border border-electricCyan/30 bg-deepCobalt/50 backdrop-blur-sm">
+                <span class="text-electricCyan font-semibold text-sm tracking-wider uppercase"><i class="fas fa-bolt mr-2"></i> Powering Digital Trust</span>
+            </div>
+            <h1 class="font-heading text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight hero-text-shadow">
+                The Trusted <span class="text-transparent bg-clip-text bg-gradient-to-r from-electricCyan to-growthGreen">Nexus</span> for <br> Digital Services
+            </h1>
+            <p class="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-sans font-light">
+                Connect with verified talent, access trusted services, and execute secure transactions. We build the infrastructure for your community's growth.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#services" class="bg-electricCyan text-deepCobalt px-8 py-4 rounded-full font-heading font-bold text-lg hover:bg-white transition-all shadow-lg hover:shadow-electricCyan/50 flex items-center justify-center gap-2">
+                    Explore Platform <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#contact" class="border-2 border-white text-white px-8 py-4 rounded-full font-heading font-bold text-lg hover:bg-white hover:text-deepCobalt transition-all flex items-center justify-center">
+                    Verify Account
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
+            <a href="#services" class="text-white/50 hover:text-white transition-colors">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Value Proposition / Stats -->
+    <section class="py-12 bg-white relative z-20 -mt-8 mx-4 md:mx-12 lg:mx-24 rounded-2xl shadow-2xl border-t-4 border-electricCyan">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-gray-100">
+            <div class="p-4">
+                <div class="text-4xl font-extrabold text-deepCobalt font-heading mb-2">10k+</div>
+                <div class="text-slateGray font-medium uppercase tracking-wide text-sm">Verified Professionals</div>
+            </div>
+            <div class="p-4">
+                <div class="text-4xl font-extrabold text-growthGreen font-heading mb-2">99.9%</div>
+                <div class="text-slateGray font-medium uppercase tracking-wide text-sm">Secure Transactions</div>
+            </div>
+            <div class="p-4">
+                <div class="text-4xl font-extrabold text-deepCobalt font-heading mb-2">24/7</div>
+                <div class="text-slateGray font-medium uppercase tracking-wide text-sm">Infrastructure Support</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-offWhite">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-electricCyan font-bold tracking-widest uppercase mb-2">Our Ecosystem</h2>
+                <h3 class="font-heading text-3xl md:text-4xl font-bold text-deepCobalt">Integrated Digital Solutions</h3>
+                <div class="w-24 h-1.5 bg-gradient-to-r from-deepCobalt to-electricCyan mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Card 1 -->
+                <div class="feature-card bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 group">
+                    <div class="w-16 h-16 bg-deepCobalt/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-deepCobalt transition-colors duration-300">
+                        <i class="fas fa-network-wired text-3xl text-deepCobalt group-hover:text-white transition-colors shield-icon"></i>
+                    </div>
+                    <h4 class="font-heading text-xl font-bold text-deepCobalt mb-3">Trusted Services</h4>
+                    <p class="text-slateGray leading-relaxed">
+                        Access a curated marketplace of essential services. We vet every provider to ensure quality and reliability for your needs.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div id="talent" class="feature-card bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-growthGreen text-deepCobalt text-xs font-bold px-3 py-1 rounded-bl-lg">POPULAR</div>
+                    <div class="w-16 h-16 bg-electricCyan/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-electricCyan transition-colors duration-300">
+                        <i class="fas fa-user-check text-3xl text-electricCyan group-hover:text-white transition-colors shield-icon"></i>
+                    </div>
+                    <h4 class="font-heading text-xl font-bold text-deepCobalt mb-3">Verified Talent</h4>
+                    <p class="text-slateGray leading-relaxed">
+                        Connect with professionals whose credentials have been authenticated by our rigorous Nexus verification system.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div id="security" class="feature-card bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 group">
+                    <div class="w-16 h-16 bg-growthGreen/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-growthGreen transition-colors duration-300">
+                        <i class="fas fa-shield-alt text-3xl text-growthGreen group-hover:text-white transition-colors shield-icon"></i>
+                    </div>
+                    <h4 class="font-heading text-xl font-bold text-deepCobalt mb-3">Secure Transactions</h4>
+                    <p class="text-slateGray leading-relaxed">
+                        Execute payments and contracts with peace of mind. Our infrastructure ensures every digital transaction is encrypted and safe.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Infrastructure Section -->
+    <section id="about" class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2 relative">
+                    <!-- abstract graphic representation using CSS -->
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-deepCobalt h-[400px] flex items-center justify-center">
+                        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20"></div>
+                        <div class="absolute w-64 h-64 bg-electricCyan/20 rounded-full blur-3xl -top-10 -left-10"></div>
+                        <div class="absolute w-64 h-64 bg-growthGreen/20 rounded-full blur-3xl -bottom-10 -right-10"></div>
+                        
+                        <!-- Center Logo Element -->
+                        <div class="relative z-10 text-center">
+                            <i class="fas fa-fingerprint text-8xl text-white/90"></i>
+                            <div class="mt-4 bg-white/10 backdrop-blur-md px-6 py-2 rounded-full border border-white/20">
+                                <span class="text-growthGreen font-bold tracking-widest uppercase text-sm"><i class="fas fa-check-circle mr-2"></i>Identity Verified</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Decorative dots -->
+                    <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-dots-pattern opacity-50"></div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <h2 class="text-electricCyan font-bold tracking-widest uppercase mb-2">Why MetaGie?</h2>
+                    <h3 class="font-heading text-3xl md:text-4xl font-bold text-deepCobalt mb-6">Building the Infrastructure for Community Growth</h3>
+                    <p class="text-slateGray text-lg mb-6 leading-relaxed">
+                        In a digital world full of noise, MetaGie Innovations stands as a beacon of trust. We aren't just a platform; we are the digital infrastructure that empowers communities to thrive.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-growthGreen mt-1 mr-3 text-xl"></i>
+                            <span class="text-slateGray"><strong>Rigorous Verification:</strong> We ensure every talent and service provider meets our high standards.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-growthGreen mt-1 mr-3 text-xl"></i>
+                            <span class="text-slateGray"><strong>Community First:</strong> Our technology is built to foster human connection, not replace it.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-growthGreen mt-1 mr-3 text-xl"></i>
+                            <span class="text-slateGray"><strong>Seamless Integration:</strong> From hiring to payment, the entire lifecycle is handled in one secure nexus.</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="text-deepCobalt font-bold font-heading hover:text-electricCyan transition-colors flex items-center gap-2 group">
+                        Learn more about our mission <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action / Contact -->
+    <section id="contact" class="py-24 bg-deepCobalt relative">
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-electricCyan/10 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-growthGreen/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+            <h2 class="font-heading text-3xl md:text-5xl font-bold text-white mb-6">Ready to Join the Nexus?</h2>
+            <p class="text-xl text-gray-300 mb-10">
+                Whether you are a talent looking to be verified or a business seeking trusted services, MetaGie is your partner in growth.
+            </p>
+            
+            <form class="bg-white rounded-2xl p-8 md:p-10 shadow-2xl max-w-2xl mx-auto text-left">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block text-slateGray font-semibold mb-2 text-sm">Full Name</label>
+                        <input type="text" class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-deepCobalt focus:ring-1 focus:ring-deepCobalt transition-colors" placeholder="John Doe">
+                    </div>
+                    <div>
+                        <label class="block text-slateGray font-semibold mb-2 text-sm">Email Address</label>
+                        <input type="email" class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-deepCobalt focus:ring-1 focus:ring-deepCobalt transition-colors" placeholder="john@example.com">
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-slateGray font-semibold mb-2 text-sm">I am interested in...</label>
+                    <select class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-deepCobalt focus:ring-1 focus:ring-deepCobalt transition-colors text-slateGray">
+                        <option>Hiring Verified Talent</option>
+                        <option>Offering Services</option>
+                        <option>Secure Transaction Tools</option>
+                        <option>General Inquiry</option>
+                    </select>
+                </div>
+                <button type="button" class="w-full bg-gradient-to-r from-deepCobalt to-blue-900 text-white font-bold font-heading py-4 rounded-lg hover:shadow-lg hover:from-blue-900 hover:to-deepCobalt transition-all transform hover:-translate-y-1">
+                    Get Started Now
+                </button>
+                <p class="text-center text-gray-400 text-xs mt-4">
+                    By clicking "Get Started Now", you agree to our Terms of Service.
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#051335] text-white pt-16 pb-8 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <!-- Footer Logo Placeholder -->
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="h-8 w-8 bg-electricCyan rounded flex items-center justify-center text-deepCobalt font-bold font-heading text-sm">M</div>
+                        <span class="font-heading font-bold text-lg">MetaGie</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Connecting people with trusted services and verified talent through secure digital infrastructure.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-electricCyan hover:text-deepCobalt transition-all"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-electricCyan hover:text-deepCobalt transition-all"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-electricCyan hover:text-deepCobalt transition-all"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-heading font-bold mb-6 text-electricCyan">Platform</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Browse Talent</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Find Services</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Verification Process</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-bold mb-6 text-electricCyan">Company</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-bold mb-6 text-electricCyan">Contact</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li class="flex items-center gap-3"><i class="fas fa-envelope text-growthGreen"></i> info@metagie.com</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-phone text-growthGreen"></i> +1 (555) 123-4567</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-growthGreen"></i> Tech District, Innovation City</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+                <p>&copy; 2024 MetaGie Innovations. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('active');
+            });
+        });
+
+        // Network Canvas Animation
+        const canvas = document.getElementById('network-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.size = Math.random() * 2 + 1;
+                // Randomly assign brand colors to particles
+                this.color = Math.random() > 0.5 ? 'rgba(0, 194, 203, ' : 'rgba(57, 229, 121, '; 
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color + '0.5)';
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            // Responsive particle count
+            const particleCount = window.innerWidth < 768 ? 40 : 80;
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            // Draw connections
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 150) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(0, 194, 203, ${0.15 - distance/1000})`; // Electric Cyan lines
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', () => {
+            resize();
+            initParticles();
+        });
+
+        // Init
+        resize();
+        initParticles();
+        animate();
+    </script>
+</body>
+</html>
